@@ -1,0 +1,16 @@
+npx lint-staged
+
+
+USER_EMAIL=$(git config user.email)
+EMAIL_REGEX='^[a-zA-Z0-9._%+-]+@(heytea\.com|heytea\.cn)$'
+
+
+if [[ ! $USER_EMAIL =~ $EMAIL_REGEX ]]; then
+  echo  "\033[1;31m邮箱错误：当前用户名为 $USER_EMAIL ，请使用你的公司邮箱作为git邮箱，可通过：git config --local user.email xxx@heytea.com 设置。\033[0m"
+  exit 1
+fi
+
+exit 0
+
+
+
